@@ -1,8 +1,14 @@
 import google.generativeai as palm
 
-from data_summarization.processing import auto_select_coloumn, create_input_str, llm
+from summarization.data_processing import *
+from summarization.input_processing import *
 
-palm.configure(api_key="AIzaSyBATda5w9AEGCb0PPvMQ02n1xo7-uAWtV0")
+from graph_plot import plot_graph
+
+import os
+
+key = os.environ.get('API_KEY')
+palm.configure(api_key=key)
 
 
 def get_summarised_txt(df, columns: list = [], autodetect: bool = True) -> list:
@@ -22,21 +28,21 @@ def get_summarised_txt(df, columns: list = [], autodetect: bool = True) -> list:
         (Default is True: case where user expects LLM to autodetect which columns should be compared)
         If True: LLM autodetects
         If False: User inputs the columns that require a comparision"""
-    # since we cant really take the inputs ourselves over here, we're gonna write the functions assuming that these inputs will be taken by monisha,
-    # and some function she writes will pass these args to this function
-
-    # TODO: will have to discuss if we need 2 ensure that 2<=len(col)<=4, or if monisha will do that
 
     if autodetect:
         columns = auto_select_coloumn(df.columns.to_list())
-        print(columns)
-        print(type(columns))
+
+    for i in columns:
+        plot_graph(df, i[0], i[1])
+        #TODO: figure out the inputs and outputs of the graphing part
+        #Returning the graphs as png
+    
+
     outputs = list()
     for i in columns:
         ip = create_input_str(i, df)
         op = llm(ip)
         print(op)
-        print("meow")
         outputs.append(op)
 
     return outputs
