@@ -5,10 +5,7 @@ from data_summarization.input_processing import *
 
 from graph_plot import plot_graph
 
-import os
-
-key = os.environ.get('API_KEY')
-palm.configure(api_key=key)
+palm.configure(api_key="AIzaSyBATda5w9AEGCb0PPvMQ02n1xo7-uAWtV0")
 
 
 def get_summarised_txt(df, columns: list = [], autodetect: bool = True) -> list:
