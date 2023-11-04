@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def plot_graph(df, x_column, y_columns):
+def plot_graph2(df, x_column, y_columns):
     try:
         df.plot(x=x_column, y=y_columns, kind='bar')
 
@@ -31,3 +31,43 @@ def plot_graph(df, x_column, y_columns):
     except:
         print("Invalid graph type or data format.")
         return
+
+def plot_graph(dataframe, x_column, y_columns):
+    
+
+    # Create a figure and axes
+    fig, ax = plt.subplots()
+
+    # Extract data from the DataFrame
+    x_data = dataframe[x_column]
+    y_data = dataframe[y_columns]
+
+    # Create and save a bar plot
+    ax.bar(x_data, y_data)
+    plt.xlabel(x_column)
+    plt.ylabel(', '.join(y_columns))
+    plt.title(f'Bar Plot: {", ".join(y_columns)} vs. {x_column}')
+    plt.savefig('pngs/' + '_bar.png')
+    plt.close()
+
+    # Create and save a scatter plot
+    fig, ax = plt.subplots()
+    for column in y_columns:
+        ax.scatter(x_data, dataframe[column], label=column)
+    plt.xlabel(x_column)
+    plt.ylabel(', '.join(y_columns))
+    plt.title(f'Scatter Plot: {", ".join(y_columns)} vs. {x_column}')
+    plt.legend()
+    plt.savefig('pngs/' + '_scatter.png')
+    plt.close()
+
+    # Create and save a line plot
+    fig, ax = plt.subplots()
+    for column in y_columns:
+        ax.plot(x_data, dataframe[column], label=column)
+    plt.xlabel(x_column)
+    plt.ylabel(', '.join(y_columns))
+    plt.title(f'Line Plot: {", ".join(y_columns)} vs. {x_column}')
+    plt.legend()
+    plt.savefig('pngs/' + '_line.png')
+    plt.close()
