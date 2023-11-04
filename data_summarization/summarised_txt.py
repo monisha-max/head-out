@@ -1,7 +1,7 @@
 import google.generativeai as palm
 
-from summarization.data_processing import *
-from summarization.input_processing import *
+from data_summarization.data_processing import *
+from data_summarization.input_processing import *
 
 from graph_plot import plot_graph
 
