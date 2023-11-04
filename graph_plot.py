@@ -50,24 +50,24 @@ def plot_graph(dataframe, x_column, y_columns):
     plt.savefig('pngs/' + '_bar.png')
     plt.close()
 
-    # Create and save a scatter plot
-    fig, ax = plt.subplots()
-    for column in y_columns:
-        ax.scatter(x_data, dataframe[column], label=column)
-    plt.xlabel(x_column)
-    plt.ylabel(', '.join(y_columns))
-    plt.title(f'Scatter Plot: {", ".join(y_columns)} vs. {x_column}')
-    plt.legend()
-    plt.savefig('pngs/' + '_scatter.png')
-    plt.close()
+    
+   #for column in y_columns:
+   #     fig, ax = plt.subplots()
+   #     ax.scatter(x_data, dataframe[column])
+   #     plt.xlabel(x_column)
+   #     plt.ylabel(column)
+   #     plt.title(f'Scatter Plot: {column} vs. {x_column}')
+   #     #plt.savefig('pngs/' + '_scatter.png')
+   #    plt.close()
+   
 
     # Create and save a line plot
-    fig, ax = plt.subplots()
-    for column in y_columns:
-        ax.plot(x_data, dataframe[column], label=column)
-    plt.xlabel(x_column)
-    plt.ylabel(', '.join(y_columns))
-    plt.title(f'Line Plot: {", ".join(y_columns)} vs. {x_column}')
-    plt.legend()
-    plt.savefig('pngs/' + '_line.png')
-    plt.close()
+    #fig, ax = plt.subplots()
+    #for column in y_columns:
+    #    ax.plot(x_data, dataframe[column], label=column)
+    #plt.xlabel(x_column)
+    #plt.ylabel(', '.join(y_columns))
+    #plt.title(f'Line Plot: {", ".join(y_columns)} vs. {x_column}')
+    #plt.legend()
+    #plt.savefig('pngs/' + '_line.png')
+    #plt.close()
