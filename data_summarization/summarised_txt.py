@@ -3,7 +3,7 @@ import google.generativeai as palm
 from data_summarization.processing import *
 from data_summarization.input_processing import *
 
-from graph_plot import plot_graph
+from graph_plot import plot_graph2
 
 palm.configure(api_key="AIzaSyBATda5w9AEGCb0PPvMQ02n1xo7-uAWtV0")
 
@@ -30,7 +30,7 @@ def get_summarised_txt(df, columns: list = [], autodetect: bool = True) -> list:
         columns = auto_select_coloumn(df.columns.to_list())
 
     for i in columns:
-        plot_graph(df, i[0], i[1])
+        plot_graph2(df, i[0], i[1])
         #TODO: figure out the inputs and outputs of the graphing part
         #Returning the graphs as png
     
